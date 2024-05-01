@@ -5,6 +5,7 @@ use App\Models\Customer;
 use App\Models\PropertyBooking;
 use App\Models\Reviews;
 use App\Models\ContactUs;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +37,27 @@ class CustomerController extends Controller
         return redirect()->route('home')->with('success','Registerd Successfully');
     }
 
+    public function sellerRegister(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'mobile' => 'required|min:10|:customers,customer_tp',
+            'email' => 'required|email|regex:/(.*)\./i|unique:users,email',
+            'password' => 'required',
+            'confirmpassword' => 'required_with:password|same:password',
+        ]);
+        $data = new User();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->tp = $request->mobile;
+        $data->password = Hash::make($request->password);
+        $data->roles = 2;
+        $data->save();
+        // dd($data);
+
+        return redirect()->route('login')->with('success','Registered Successfully');
+    }
+
     public function bookYourProperty(Request $request)
     {
         $customer = Auth::guard('customer')->user();
@@ -43,6 +65,7 @@ class CustomerController extends Controller
         $data = new PropertyBooking();
         $data->property_id = $request->property_id;
         $data->customer_id = $request->customer_id;
+        $data->user_id = $request->user_id;
         $data->booking_date = $request->booking_date;
         $data->contract_plan = $request->contract_plan;
         $data->save();

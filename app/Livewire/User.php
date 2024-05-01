@@ -25,6 +25,8 @@ class User extends Component
     public $new_confirm_password;
     public $new_user_password;
     public $new_user_roles;
+    public $status;
+    public $selected_id;
 
     public function openModel()
     {
@@ -60,7 +62,35 @@ class User extends Component
             $this->deleteCloseModel();
         }
     }
+    public function openStatusChangeModel()
+    {
+        $this->dispatch('status-show-form');
+    }
 
+    public function statusChangeModel($id, $status)
+    {
+        $this->selected_id = $id;
+        $this->status = $status;
+        $this->openStatusChangeModel();
+    }
+
+    public function closeStatusChangeModel()
+    {
+        $this->dispatch('status-hide-form');
+    }
+
+    public function saveStatusChangeModel()
+    {
+        $data = UserModel::find($this->selected_id);
+        $data->status = (int)$this->status;
+        $data->save();
+        $this->statusClear();
+    }
+    public function statusClear()
+    {
+        $this->selected_id = null;
+        $this->closeStatusChangeModel();
+    }
     public function fetchData()
     {
     }

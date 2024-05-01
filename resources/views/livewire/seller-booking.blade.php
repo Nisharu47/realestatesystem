@@ -54,7 +54,6 @@
                                 <th>Customer Name</th>
                                 <th>Booking Date</th>
                                 <th>Contract Plan</th>
-                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                             @foreach ($list_data as $row)
@@ -73,19 +72,7 @@
                                         @elseif($row->contract_plan == 4)
                                             20 Years
                                         @endif
-                                    <td>
-                                        @if ($row->status == 0)
-                                            <button class="btn btn-sm btn-success"
-                                                wire:click="statusChangeModel('{{ $row->id }}','{{ $row->status }}')">
-                                                Accepted
-                                            </button>
-                                        @elseif($row->status == 1)
-                                            <button class="btn btn-sm btn-danger"
-                                                wire:click="statusChangeModel('{{ $row->id }}','{{ $row->status }}')">
-                                                Declined
-                                            </button>
-                                        @endif
-                                    </td>
+
                                     <td>
                                         <a href="#" class="text-danger m-2"
                                             wire:click="deleteOpenModel({{ $row->id }})"><i class="fa fa-trash"
@@ -117,43 +104,6 @@
 
         {{-- model end --}}
 
-        <div wire:ignore.self class="modal fade" id="status-model" tabindex="-1" role="dialog"
-            aria-labelledby="formModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-danger" id="formModal">Change Status</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="col-md-12 col-lg-12 col-sm-12">
-                            <div class="form-group">
-                                <label>Status</label>
-                                <select class="form-control" wire:model="status">
-                                    <option value="0">Accepted</option>
-                                    <option value="1">Declined</option>
-
-
-                                </select>
-                                @error('status')
-                                    <span class="text-danger text-sm">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <button type="button" wire:click="closeStatusChangeModel"
-                                class="btn btn-success m-t-15 waves-effect">No </button>
-                            <button type="button" wire:click="saveStatusChangeModel"
-                                class="btn btn-danger m-t-15 waves-effect">Yes</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
 
         {{-- delete model here --}}
         <div wire:ignore.self class="modal fade" id="delete-model" tabindex="-1" role="dialog"

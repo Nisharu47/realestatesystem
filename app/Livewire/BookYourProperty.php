@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 use App\Models\PropertyBooking;
+use App\Models\SmartContract;
 use App\Models\Property;
 use App\Models\PropertyType;
 use App\Models\Customer;
@@ -16,6 +17,7 @@ class BookYourProperty extends Component
     public $customerId;
     public $bookingId;
     public $bookingView = [];
+    public $smartContract = [];
     public $property = "";
     public $propertyType = "";
 
@@ -28,6 +30,7 @@ class BookYourProperty extends Component
     {
         $this->property = Property::all();
         $this->propertyType = PropertyType::all();
+        $this->smartContract = SmartContract::all();
 
         $this->bookingView = DB::table('properties')
                                 ->select('properties.*','property_types.property_type')
@@ -38,8 +41,8 @@ class BookYourProperty extends Component
          $customer = Auth::guard('customer')->user();
         $this->customerId = $customer->id;
 
-       
-        
+
+
     }
     public function render()
     {

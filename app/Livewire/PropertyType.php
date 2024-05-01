@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\PropertyType as PropertyTypeModel;
+use App\Models\Property;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -54,6 +55,7 @@ class PropertyType extends Component
             $data->delete();
             $this->deleteCloseModel();
         }
+
     }
 
     //fetch data from db
@@ -104,7 +106,6 @@ class PropertyType extends Component
             //clear data
             $this->clearData();
             $this->closeModel();
-
         }
     }
 
@@ -132,17 +133,17 @@ class PropertyType extends Component
         $this->fetchData();
         #if search active
         if (!$this->searchKey) {
-           $list_data = DB::table('property_types')
-               ->select('property_types.*')
-               ->latest()
-               ->paginate(10);
-       } else {
-           $list_data = DB::table('property_types')
-               ->select('property_types.*')
-               ->where('property_types.property_type', 'LIKE', '%' . $this->searchKey . '%')
-               ->latest()
-               ->paginate(10);
-       }
-        return view('livewire.property-type',['list_data' => $list_data])->layout('layouts.master');
+            $list_data = DB::table('property_types')
+                ->select('property_types.*')
+                ->latest()
+                ->paginate(10);
+        } else {
+            $list_data = DB::table('property_types')
+                ->select('property_types.*')
+                ->where('property_types.property_type', 'LIKE', '%' . $this->searchKey . '%')
+                ->latest()
+                ->paginate(10);
+        }
+        return view('livewire.property-type', ['list_data' => $list_data])->layout('layouts.master');
     }
 }

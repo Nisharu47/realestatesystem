@@ -49,6 +49,10 @@
                                 <input type="number" class="form-control @error('property_id') is-invalid @enderror" name="property_id" value="{{ $bookingView[0]->id }}"  id="property_id" >
                             </div>
                             <div class="form-group">
+                                <label class="label" for="name">User ID</label>
+                                <input type="number" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ $bookingView[0]->user_id }}"  id="user_id" >
+                            </div>
+                            <div class="form-group">
                                 <label class="label" for="name">Customer ID</label>
                                 <input type="number" class="form-control @error('customer_id') is-invalid @enderror" name="customer_id" value="{{ $customerId }}"  id="customer_id" >
                             </div>
@@ -59,21 +63,24 @@
                                 <input type="date" class="form-control  @error('booking_date') is-invalid @enderror" name="booking_date"  id="booking_date"  >
                             </div>
                         </div>
-                        
-                        <div class="col-md-12">
+
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>User-Type</label>
+                                <label>Smart Contract</label>
                                 <select class="form-control" name="contract_plan">
                                     <option value="">-- Select Contract Plan-- </option>
-                                    <option value="0">5 Years </option>
-                                    <option value="1">10 Years </option>
-                                    <option value="2">20 Years </option>
+                                    @foreach ( $smartContract as $smart)
+                                    <option value="{{ $smart->id }}">
+                                        {{ $smart->contract_period . "and" . "" . "" . $smart->Price}}
+                                    </option>
+                                    @endforeach
                                 </select>
                                 @error('contract_plan')
                                     <span class="text-danger text-sm">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
 
                         <div class="col-md-12">
                             <div class="form-group">

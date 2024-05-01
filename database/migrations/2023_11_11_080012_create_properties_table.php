@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('property_type_id');
             $table->foreign('property_type_id')->references('id')->on('property_types');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('property_name');
             $table->string('location');
             $table->double('price');

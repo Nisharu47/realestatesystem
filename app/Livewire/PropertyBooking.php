@@ -21,7 +21,7 @@ class PropertyBooking extends Component
         $this->list_data = DB::table('properties')
                    ->select('properties.*','property_types.property_type')
                    ->leftJoin('property_types', 'properties.property_type_id','property_types.id')
-                    ->where('status',0)
+                    ->where('status',1)
                    ->get();
     }
     public function render()

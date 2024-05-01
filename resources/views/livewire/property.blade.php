@@ -77,17 +77,22 @@
                                     <td>{{ $row->description }}</td>
                                     <td>
                                         @if ($row->status == 0)
+                                            <button class="btn btn-sm btn-primary"
+                                                wire:click="statusChangeModel('{{ $row->id }}','{{ $row->status }}')">
+                                                Pending
+                                            </button>
+                                        @elseif($row->status == 1)
                                             <button class="btn btn-sm btn-success"
                                                 wire:click="statusChangeModel('{{ $row->id }}','{{ $row->status }}')">
                                                 Available
                                             </button>
-                                        @elseif($row->status == 1)
-                                            <button class="btn btn-sm btn-danger"
+                                        @elseif ($row->status == 2)
+                                            <button class="btn btn-sm btn-warning"
                                                 wire:click="statusChangeModel('{{ $row->id }}','{{ $row->status }}')">
                                                 Booked
                                             </button>
-                                        @elseif ($row->status == 2)
-                                            <button class="btn btn-sm btn-warning"
+                                            @elseif ($row->status == 3)
+                                            <button class="btn btn-sm btn-Danger"
                                                 wire:click="statusChangeModel('{{ $row->id }}','{{ $row->status }}')">
                                                 Sold
                                             </button>
@@ -255,9 +260,10 @@
                             <div class="form-group">
                                 <label>Status</label>
                                 <select class="form-control" wire:model="status">
-                                    <option value="0">Available</option>
-                                    <option value="1">Booked</option>
-                                    <option value="2">Sold</option>
+                                    <option value="0">Pending</option>
+                                    <option value="1">Available</option>
+                                    <option value="2">Booked</option>
+                                    <option value="3">Sold</option>
 
 
                                 </select>

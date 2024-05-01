@@ -29,6 +29,10 @@ class LoginController extends Controller
         if ($user) {
             //check entered password
             if (Hash::check($request->input('password'), $user->password)) {
+                if ($user->roles === 2) {
+                    Auth::login($user);
+                return redirect()->route('seller-dashboard');
+                }
 
                 // here auth login
                 Auth::login($user);
