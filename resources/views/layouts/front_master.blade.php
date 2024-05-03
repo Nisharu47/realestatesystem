@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Findstate - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Real Estate</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -32,7 +32,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="/">Real Estate</a>
+            <a class="navbar-brand" href="/"> <span class="logo-name"><img src="{{ asset('front_assets/images/logo.png') }}" alt="Logo" style="width: 150px; height:150px;"></span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu

@@ -73,9 +73,9 @@
 
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
-                    <div class="sidebar-brand">
+                    <div class="sidebar-brand mb-5">
                         <a href="/dashboard">
-                            <span class="logo-name">Real Estate</span>
+                            <span class="logo-name"><img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="width: 150px; height:150px;"></span>
                         </a>
                     </div>
                     <ul class="sidebar-menu">
