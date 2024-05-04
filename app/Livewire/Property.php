@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Livewire\Component;
+use Auth;
 
 class Property extends Component
 {
@@ -125,6 +126,7 @@ class Property extends Component
             $data->location = $this->new_location;
             $data->price = $this->new_price;
             $data->description = $this->new_description;
+            $data->user_id = Auth::user()->id;
             if (is_array($this->new_image) && !empty($this->new_image)) {
                 foreach ($this->new_image as $image) {
                     if (!empty($image)) {
