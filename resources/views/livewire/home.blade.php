@@ -1,4 +1,12 @@
 <div>
+    <style>
+        .padding {
+            padding-bottom: 3rem !important;
+        }
+    </style>
+    <div class="padding">
+
+    </div>
     <div class="hero-wrap" style="background-image: url('front_assets/images/bg_2.jpg');"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>

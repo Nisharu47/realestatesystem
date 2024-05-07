@@ -1,4 +1,13 @@
 <div>
+    <style>
+        .padding {
+            padding-bottom: 3rem !important;
+        }
+    </style>
+    <div class="padding">
+
+    </div>
+    
     <div class="row no-gutters">
         <div class="col-lg-12">
             <div class="contact-wrap w-100 p-md-5 p-4">
@@ -32,7 +41,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
         </div>

@@ -1,4 +1,10 @@
 <div>
+    <style>
+        .padding {
+            padding-bottom: 4rem !important;
+        }
+    </style>
+    <div class="padding"></div>
     <section class="section-padding30">
         <div class="container">
             <div class="row d-flex justify-content-center align-items-center h-100">

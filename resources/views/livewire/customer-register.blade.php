@@ -1,4 +1,10 @@
 <div>
+    <style>
+        .padding {
+            padding-bottom: 3rem !important;
+        }
+    </style>
+    <div class="padding"></div>
 
     <div class="row no-gutters pt-3">
         <div class="col-lg-12">

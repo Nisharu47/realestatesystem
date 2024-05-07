@@ -1,4 +1,13 @@
 <div>
+    <style>
+        .padding {
+            padding-bottom: 3rem !important;
+        }
+    </style>
+    <div class="padding">
+
+    </div>
+    
     <section class="ftco-section goto-here">
         <div class="container">
             <div class="row justify-content-center">

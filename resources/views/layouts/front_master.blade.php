@@ -30,13 +30,14 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="/"> <span class="logo-name"><img src="{{ asset('front_assets/images/logo.png') }}" alt="Logo" style="width: 150px; height:150px;"></span></a>
+            <a class="navbar-brand" href="/"> <span class="logo-name"><img src="{{ asset('front_assets/images/logo.png') }}" alt="Logo" style="width: 100px; height:100px;"></span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
+
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
@@ -67,8 +68,10 @@
     <main>
         {{-- main content start --}}
         <div>
+
             {{ $slot }}
         </div>
+
         {{-- main content end --}}
     </main>
 
