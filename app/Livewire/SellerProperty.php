@@ -185,13 +185,15 @@ class SellerProperty extends Component
             $list_data = DB::table('properties')
                 ->select('properties.*', 'property_types.property_type')
                 ->leftJoin('property_types', 'properties.property_type_id', 'property_types.id')
+                ->where('properties.user_id', Auth::user()->id)
                 ->latest()
                 ->paginate(10);
         } else {
             $list_data = DB::table('properties')
                 ->select('properties.*', 'property_types.property_type')
                 ->leftJoin('property_types', 'properties.property_type_id', 'property_types.id')
-                ->where('properties.property_name', 'LIKE', '%' . $this->searchKey . '%')
+                ->where('properties.user_id', Auth::user()->id)
+                ->orWhere('properties.property_name', 'LIKE', '%' . $this->searchKey . '%')
                 ->orWhere('properties.property_type_id', 'LIKE', '%' . $this->searchKey . '%')
                 ->orWhere('properties.location', 'LIKE', '%' . $this->searchKey . '%')
                 ->orWhere('properties.price', 'LIKE', '%' . $this->searchKey . '%')

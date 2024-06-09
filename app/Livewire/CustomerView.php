@@ -18,9 +18,31 @@ class CustomerView extends Component
     public $key = 0;
     public $message = "";
 
+    public $delete_id = 0;
+    public function deleteOpenModel($id)
+    {
+        $this->delete_id = $id;
+        $this->dispatch('delete-show-form');
+    }
+
+    //close model close
+    public function deleteCloseModel()
+    {
+        $this->dispatch('delete-hide-form');
+    }
+
+    public function deleteRecord()
+    {
+        # code...
+        if ($this->delete_id != 0) {
+            $data = CustomerModel::find($this->delete_id);
+            $data->delete();
+            $this->deleteCloseModel();
+        }
+    }
     public function fetchData()
     {
-        
+
     }
     public function render()
     {
